@@ -108,7 +108,6 @@ const UploadPage = ({ signedInUser, setLoading }: appProps) => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
         setUploadingFiles(false);
         setLoading(false);
       });
@@ -125,14 +124,11 @@ const UploadPage = ({ signedInUser, setLoading }: appProps) => {
         username: signedInUser,
         private: meta.private,
       };
-      console.log(metadata);
       let uploadUrl;
       try {
         let uploadRes = await axios.post(`${apiUrl}/image`, metadata);
-        console.log(uploadRes);
         uploadUrl = uploadRes.data;
       } catch (err) {
-        console.error(err);
         return;
       }
 
@@ -142,18 +138,15 @@ const UploadPage = ({ signedInUser, setLoading }: appProps) => {
         axios
           .put(uploadUrl, base64Image)
           .then((val) => {
-            console.log(val);
             setPendingFiles((prev) =>
               prev.filter((f) => f.fileObj.file !== file)
             );
             resolve(`Uploaded ${file.name}`);
           })
           .catch((err) => {
-            console.error(err);
             reject(`Could not upload ${file.name}`);
           });
       } catch (err) {
-        console.error(err);
         reject(`Could not convert ${file.name}`);
       }
     });
@@ -214,7 +207,6 @@ const UploadPage = ({ signedInUser, setLoading }: appProps) => {
         acceptedFiles={["image/*"]}
         dropzoneText={"Drag and drop an image here or click"}
         showFileNames
-        onAlert={(message, variant) => console.log(`${variant}: ${message}`)}
       />
       <Dialog
         open={filePickerOpen}

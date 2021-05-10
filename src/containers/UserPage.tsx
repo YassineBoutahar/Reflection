@@ -13,7 +13,6 @@ type appProps = {
 
 const UserPage = ({ user, signedInUser, setLoading }: appProps) => {
   const [allImagesKeys, setAllImageKeys] = useState<string[]>([]);
-  console.log(user);
 
   useEffect(() => {
     if(!user) return;
@@ -26,7 +25,7 @@ const UserPage = ({ user, signedInUser, setLoading }: appProps) => {
       .then((val) => {
         setAllImageKeys((val.data as string[]) || []);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {});
   };
 
   return (

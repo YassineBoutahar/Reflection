@@ -48,21 +48,17 @@ const UserImage = ({
         axios
           .get(presignedS3Url)
           .then((lval) => {
-            console.log(lval);
             setSingleImage(lval.data);
             setLoading(false);
           })
           .catch((eee) => {
-            console.error(eee);
             setSingleImage(
               "https://erickson.edu/sites/default/files/404%20Error_0.png"
             );
             setLoading(false);
           });
-        console.log(val.data);
       })
       .catch((err) => {
-        console.error(err);
         setSingleImage(
           "https://erickson.edu/sites/default/files/404%20Error_0.png"
         );

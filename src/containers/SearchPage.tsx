@@ -26,16 +26,17 @@ const SearchPage = ({ searchQuery, signedInUser, setLoading }: searchProps) => {
         params: { searchQuery: query, username: signedInUser },
       })
       .then((val) => {
-        console.log(val.data);
-        setMatchingImageKeys(val.data || [])
+        setMatchingImageKeys(val.data || []);
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch((err) => {});
   };
 
   return (
-    <ImageGallery signedInUser={signedInUser} imageKeys={matchingImageKeys} setLoading={setLoading} />
+    <ImageGallery
+      signedInUser={signedInUser}
+      imageKeys={matchingImageKeys}
+      setLoading={setLoading}
+    />
   );
 };
 

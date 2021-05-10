@@ -113,10 +113,9 @@ const App = () => {
         params: { userToken: localStorage.getItem("reflection.usertoken") },
       })
       .then((val) => {
-        console.log(val);
         setSignedInUser(val.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {});
   }, [localStorage.getItem("reflection.usertoken")]);
 
   return (

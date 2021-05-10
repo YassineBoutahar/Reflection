@@ -64,7 +64,6 @@ const ImageGallery = ({ imageKeys, signedInUser, setLoading }: appProps) => {
     Promise.all(imageUrls.map((imgKey) => getSingleImage(imgKey)))
       .then((val: any) => setLoading(false))
       .catch((err: string) => {
-          console.error(err);
           setLoading(false);
         });
   };
@@ -81,7 +80,6 @@ const ImageGallery = ({ imageKeys, signedInUser, setLoading }: appProps) => {
           axios
             .get(presignedS3Url)
             .then((lval) => {
-              console.log(lval);
               let tempImg = new Image();
               tempImg.onload = () => {
                 setAllImages((prev) => [
@@ -97,14 +95,11 @@ const ImageGallery = ({ imageKeys, signedInUser, setLoading }: appProps) => {
               };
               tempImg.src = lval.data;
             })
-            .catch((eee) => {
-              console.error(eee);
-              reject(eee);
+            .catch((err) => {
+              reject(err);
             });
-          console.log(val.data);
         })
         .catch((err) => {
-          console.error(err);
           err.response.status === 403 ? resolve(err) : reject(err);
         });
     });
@@ -120,9 +115,8 @@ const ImageGallery = ({ imageKeys, signedInUser, setLoading }: appProps) => {
         setAllImages((prev) =>
           prev.filter((_img, idx) => idx !== imageIndex)
         );
-        console.log(deleteResponse);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {});
   };
 
   const CustomHeader = () => (
