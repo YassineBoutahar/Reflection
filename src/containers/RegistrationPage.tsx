@@ -87,7 +87,7 @@ const RegistrationPage = ({ setLoading }: registrationProps) => {
             onChange={(event) => {
               setUsername(event.target.value);
               if (
-                event.target.value.match(/[$-/:-?{-~!"^_`\[\]]/) || 
+                event.target.value.match(/[$-/:-?{-~!"^_`[\]]/) || 
                 event.target.value.match(/\s/)
               ) {
                 setInputError(true);

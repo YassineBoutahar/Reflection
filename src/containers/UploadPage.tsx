@@ -13,7 +13,6 @@ import {
   Box,
   makeStyles,
 } from "@material-ui/core";
-import { DialogProps } from "@material-ui/core/Dialog";
 import { config } from "../config";
 
 const apiUrl = config.apiUrl;
@@ -71,14 +70,8 @@ const UploadPage = ({ signedInUser, setLoading }: appProps) => {
   const [uploadingFiles, setUploadingFiles] = useState<boolean>(false);
   const [filePickerOpen, setFilePickerOpen] = useState<boolean>(false);
   const [metaEditorOpen, setMetaEditorOpen] = useState<boolean>(false);
-  const [scroll, setScroll] = useState<DialogProps["scroll"]>("paper");
 
   const classes = useStyles();
-
-  const handleClickOpen = (scrollType: DialogProps["scroll"]) => () => {
-    setFilePickerOpen(true);
-    setScroll(scrollType);
-  };
 
   const handleClose = () => {
     setFilePickerOpen(false);
@@ -226,12 +219,12 @@ const UploadPage = ({ signedInUser, setLoading }: appProps) => {
       <Dialog
         open={filePickerOpen}
         onClose={handleClose}
-        scroll={scroll}
+        scroll={"paper"}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
         <DialogTitle id="scroll-dialog-title">Metadata Editor</DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
+        <DialogContent dividers={true}>
           {pendingFiles.map((f) => (
             <img
               className={classes.editorPreview}

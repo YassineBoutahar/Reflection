@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import ImageGallery from "../components/ImageGallery";
 import axios from "axios";

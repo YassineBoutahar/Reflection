@@ -1,10 +1,4 @@
 let CreateUser = require("../CreateUser");
-let DeleteImage = require("../DeleteImage");
-let GetImage = require("../GetImage");
-let GetUser = require("../GetUser");
-let GetUserImages = require("../GetUserImages");
-let Search = require("../Search");
-let UploadImage = require("../UploadImage");
 const AWS = require("aws-sdk");
 
 // const dynamoDBImages = [{}]
